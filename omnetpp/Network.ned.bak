@@ -1,0 +1,66 @@
+network Network
+{
+    parameters:
+        int n = default(7);
+        int t = default(2);
+        int c = default(1);
+        int senderId = default(0);
+        int messageLen = default(32);
+        double delay = default(1ms);
+        double bandwidth = default(1Gbps);
+
+    submodules:
+        node[n]: CRBB {
+            parameters:
+                id = index;
+                n = parent.n;
+                t = parent.t;
+                c = parent.c;
+                senderId = parent.senderId;
+                messageLen = parent.messageLen;
+        }
+
+    connections allowunconnected:
+        node[0].out++ --> {  delay = delay; datarate = bandwidth; } --> node[1].in++;
+        node[1].out++ --> {  delay = delay; datarate = bandwidth; } --> node[0].in++;
+        node[0].out++ --> {  delay = delay; datarate = bandwidth; } --> node[2].in++;
+        node[2].out++ --> {  delay = delay; datarate = bandwidth; } --> node[0].in++;
+        node[0].out++ --> {  delay = delay; datarate = bandwidth; } --> node[3].in++;
+        node[3].out++ --> {  delay = delay; datarate = bandwidth; } --> node[0].in++;
+        node[0].out++ --> {  delay = delay; datarate = bandwidth; } --> node[4].in++;
+        node[4].out++ --> {  delay = delay; datarate = bandwidth; } --> node[0].in++;
+        node[0].out++ --> {  delay = delay; datarate = bandwidth; } --> node[5].in++;
+        node[5].out++ --> {  delay = delay; datarate = bandwidth; } --> node[0].in++;
+        node[0].out++ --> {  delay = delay; datarate = bandwidth; } --> node[6].in++;
+        node[6].out++ --> {  delay = delay; datarate = bandwidth; } --> node[0].in++;
+        node[1].out++ --> {  delay = delay; datarate = bandwidth; } --> node[2].in++;
+        node[2].out++ --> {  delay = delay; datarate = bandwidth; } --> node[1].in++;
+        node[1].out++ --> {  delay = delay; datarate = bandwidth; } --> node[3].in++;
+        node[3].out++ --> {  delay = delay; datarate = bandwidth; } --> node[1].in++;
+        node[1].out++ --> {  delay = delay; datarate = bandwidth; } --> node[4].in++;
+        node[4].out++ --> {  delay = delay; datarate = bandwidth; } --> node[1].in++;
+        node[1].out++ --> {  delay = delay; datarate = bandwidth; } --> node[5].in++;
+        node[5].out++ --> {  delay = delay; datarate = bandwidth; } --> node[1].in++;
+        node[1].out++ --> {  delay = delay; datarate = bandwidth; } --> node[6].in++;
+        node[6].out++ --> {  delay = delay; datarate = bandwidth; } --> node[1].in++;
+        node[2].out++ --> {  delay = delay; datarate = bandwidth; } --> node[3].in++;
+        node[3].out++ --> {  delay = delay; datarate = bandwidth; } --> node[2].in++;
+        node[2].out++ --> {  delay = delay; datarate = bandwidth; } --> node[4].in++;
+        node[4].out++ --> {  delay = delay; datarate = bandwidth; } --> node[2].in++;
+        node[2].out++ --> {  delay = delay; datarate = bandwidth; } --> node[5].in++;
+        node[5].out++ --> {  delay = delay; datarate = bandwidth; } --> node[2].in++;
+        node[2].out++ --> {  delay = delay; datarate = bandwidth; } --> node[6].in++;
+        node[6].out++ --> {  delay = delay; datarate = bandwidth; } --> node[2].in++;
+        node[3].out++ --> {  delay = delay; datarate = bandwidth; } --> node[4].in++;
+        node[4].out++ --> {  delay = delay; datarate = bandwidth; } --> node[3].in++;
+        node[3].out++ --> {  delay = delay; datarate = bandwidth; } --> node[5].in++;
+        node[5].out++ --> {  delay = delay; datarate = bandwidth; } --> node[3].in++;
+        node[3].out++ --> {  delay = delay; datarate = bandwidth; } --> node[6].in++;
+        node[6].out++ --> {  delay = delay; datarate = bandwidth; } --> node[3].in++;
+        node[4].out++ --> {  delay = delay; datarate = bandwidth; } --> node[5].in++;
+        node[5].out++ --> {  delay = delay; datarate = bandwidth; } --> node[4].in++;
+        node[4].out++ --> {  delay = delay; datarate = bandwidth; } --> node[6].in++;
+        node[6].out++ --> {  delay = delay; datarate = bandwidth; } --> node[4].in++;
+        node[5].out++ --> {  delay = delay; datarate = bandwidth; } --> node[6].in++;
+        node[6].out++ --> {  delay = delay; datarate = bandwidth; } --> node[5].in++;
+}
